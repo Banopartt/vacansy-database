@@ -24,3 +24,15 @@ export const navbarModals = [
       name: 'Войти',
     },
   ]
+
+export const policyLinks = [
+  {
+    name: 'Пользовательское соглашение'
+  },
+  {
+    name: ' Политика конфидецальности'
+  },
+  {
+    name: 'Контактная информация'
+  }
+] 
