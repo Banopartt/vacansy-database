@@ -6,4 +6,9 @@
     --font-rubik: "Rubik", "sans-serif";
     --color-customBlack: #133F42;
     --color-customPink: #FF4A96;
+    --color-lightGrey: #F8F8F8;
+}
+
+body {
+    @apply bg-lightGrey;
 }
