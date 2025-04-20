@@ -9,7 +9,7 @@
           </li>
         </ul>
       </nav>
-      <div>
+      <div class="cursor-pointer " @click="router.push('/')">
         Homester.pro
       </div>
       <nav class="hidden md:block">
@@ -34,8 +34,9 @@
 import { useSidebarStore } from '@/stores/sidebar';
 import BurgerMenu from '../burger-menu.vue';
 import { navbarLinks, navbarModals } from '@/const/links';
+import { useRouter } from 'vue-router';
 const { actions } = useSidebarStore()
-
+const router =  useRouter()
 </script>
 
 <style scoped></style>

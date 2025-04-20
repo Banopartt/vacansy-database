@@ -5,6 +5,7 @@ import CategoryCard from '@/components/widgets/category-card.vue';
 import { mockCategory } from '@/const/mock-category';
 import remoteDepartments from '@/components/remote-departments.vue';
 import { mockDepartments } from '@/const/mock-departments';
+import DepartmentSection from '@/components/department-section.vue';
 
 
 </script>
@@ -24,15 +25,6 @@ import { mockDepartments } from '@/const/mock-departments';
 Категория, Еще категория, Категория, Категория, Категория, Еще категория, Категория, Категория, 
     </p>
    </section>
-   <section class="bg-white">
-  <div class="container mx-auto px-5 pt-20 ">
-    <h2 class="text-center text-customBlack font-rubik text-2xl">
-      Помогаем строить удаленные отделы
-    </h2>
-   <div class="mt-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-    <remote-departments v-for="card in mockDepartments" :key="'mockDepartments' + card.id" :card="card" />
-   </div>
-  </div> 
-  </section>
+   <DepartmentSection/>
   </div>
 </template>

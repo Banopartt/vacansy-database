@@ -1,7 +1,7 @@
 export const navbarLinks = [
     {
       name: 'Вакансии',
-      path: '/',
+      path: '/vacansies',
     },
     {
       name: 'Резюме',
