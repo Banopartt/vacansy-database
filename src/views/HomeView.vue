@@ -2,7 +2,6 @@
 import BannerInfo from '@/components/banner-info.vue';
 import SearchVacansies from '@/components/search-vacansies.vue';
 import CategoryCard from '@/components/widgets/category-card.vue';
-import { mockCategory } from '@/const/mock-category';
 import DepartmentSection from '@/components/department-section.vue';
 import { onMounted, ref } from 'vue';
 import {http} from '/api/http.js';
