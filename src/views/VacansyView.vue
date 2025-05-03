@@ -24,7 +24,7 @@ import DepartmentSection from '@/components/department-section.vue';
 import JobFilter from '@/components/job-filter.vue';
 import SearchVacansies from '@/components/search-vacansies.vue';
 import { onMounted, ref } from 'vue';
-import {http} from '/api/http.js'
+import {http} from '@/api/http.js'
 import {ProgressSpinner, Message} from 'primevue';
 import VacancyCard from '@/components/vacancy-card.vue';
 

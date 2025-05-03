@@ -4,7 +4,7 @@ import SearchVacansies from '@/components/search-vacansies.vue';
 import CategoryCard from '@/components/widgets/category-card.vue';
 import DepartmentSection from '@/components/department-section.vue';
 import { onMounted, ref } from 'vue';
-import {http} from '/api/http.js';
+import {http} from '@/api/http.js';
 
 const categories = ref([])
 

@@ -21,8 +21,14 @@ const router = createRouter({
       path: '/vacansies',
       name:'vacansies',
       component: () => import('../views/VacansyView.vue') 
+    },
+    {
+      path: '/resumes',
+      name: 'resumes',
+      component: () => import('../views/ResumeView.vue')
     }
   ],
+
 })
 
 export default router
