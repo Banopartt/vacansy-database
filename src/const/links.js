@@ -9,7 +9,7 @@ export const navbarLinks = [
     },
     {
       name: 'Цены и услуги',
-      path: '/',
+      path: '/services',
     },
   ]
 

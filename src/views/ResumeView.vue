@@ -15,7 +15,7 @@
         >
         На данный момент резюме нет    
         </p>
-        <Button class="w-full mt-20" severity="secondary">
+        <Button class="container mx-auto px-5 w-full mt-20 !bg-white" severity="secondary">
             Eще 20 резюме
         </Button>
     </div>
