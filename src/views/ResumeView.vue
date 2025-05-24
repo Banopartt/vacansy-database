@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SearchVacansies :is-filter-btn="true" class="mt-10" />
+        <SearchVacansies @searchResumes="searchResumes" v-model:search-value="searchValue" :is-filter-btn="true" class="mt-10" />
         <div v-if="isLoading" class="flex justify-center items-center my-4">
             <ProgressSpinner/>
         </div>
@@ -31,11 +31,27 @@ import { Message, ProgressSpinner, Button } from 'primevue';
 const resumes = ref([]) 
 const isLoading = ref(false)
 const errorMessage = ref("")
+const searchValue = ref('')
+
 
 async function fetchResumes() {
     isLoading.value = true
     try{
         const response = await http.get('/resumes')
+        resumes.value = response.data
+        isLoading.value = false 
+    } catch(e) {
+        console.log(e)
+        errorMessage.value = "Произошла ошибка с резюме"
+    } finally {
+        isLoading.value = false
+    }
+}
+
+async function searchResumes() {
+    isLoading.value = true
+    try{
+        const response = await http.get('/resumes?name=*' + searchValue.value)
         resumes.value = response.data
         isLoading.value = false 
     } catch(e) {

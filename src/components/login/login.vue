@@ -8,7 +8,7 @@ import { useRouter } from 'vue-router';
 
 
 const selecteRole = ref(ROLES.EMPLOYEE)
-
+const isOpenResumeModal = defineModel('isOpenResumeModal')
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
@@ -29,6 +29,7 @@ const createUsers = async () => {
     })
     localStorage.setItem('my-token', res.data?.token)
     await router.push(`/user/${res.data?.data?.id}`)
+    isOpenResumeModal.value = false
   } catch(e){
     errorMessage.value = 'Введите корректные данные'
   }

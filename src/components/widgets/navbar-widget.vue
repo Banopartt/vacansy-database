@@ -28,10 +28,10 @@
       <i class="pi pi-user !text-xl !block md:!hidden"></i>
     </div>
     <Dialog header="Регистрация" v-model:visible="isOpenResumeModal" modal>
-      <Login />
+      <Login v-model:isOpenResumeModal="isOpenResumeModal" />
     </Dialog>
     <Dialog header="Регистрация" v-model:visible="isOpenVacanciesModal" modal>
-      <Login />
+      <Login v-model:isOpenResumeModal="isOpenResumeModal" />
     </Dialog>
     <Dialog header="Вход в кабинет" v-model:visible="isOpenLoginModal" modal>
       <Signup />

@@ -13,6 +13,9 @@
         class="!bg-lightGrey mt-3 !border-none !text-customBlack"
       />
     </div>
+    <p v-show="errorMessage" class="text-red-500 font-semibold">
+      {{ errorMessage }}
+    </p>
     <Button type="submit" variant="outlined" class="!border-customPink w-full mt-7 !text-customPink">
       Войти
     </Button>
@@ -28,9 +31,14 @@ import { ref } from 'vue';
 
 const email = ref('')
 const password = ref('')
+const errorMessage = ref('')
 
 const loginUsers = async () => {
   try{
+     if(email.value === '' || password.value === ''){
+    errorMessage.value = 'Заполните все поля'
+    return
+  }
     const res = await http.post('/auth', {
       email: email.value,
       password: password.value,
@@ -38,7 +46,9 @@ const loginUsers = async () => {
     localStorage.setItem('my-token', res.data?.token)
   }catch(error) {
     console.log(error);
-    
+    if (error.response.status === 401){
+      errorMessage.value = 'Пользователь не авторизован'
+    }
   }
 }
 </script>

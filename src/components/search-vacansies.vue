@@ -25,21 +25,25 @@
 </template>
 
 <script setup>
+import { debounce } from '@/lib/debounce';
 import { InputText, Button } from 'primevue';
 import { ref, watch } from 'vue';
 
+
+const emit = defineEmits(['searchResumes'])
+
 const {isFilterBtn} = defineProps(['isFilterBtn'])
-const searchValue = ref('')
+const searchValue = defineModel('searchValue')
 
 const isVisibleSearchIcon = ref(true)
+const debounceEmit = debounce(()=> {
+    emit('searchResumes')
+},500)
+
 
 watch(searchValue, ()=>{
-    if (searchValue.value.length) {
-        isVisibleSearchIcon.value = false
-    }
-    if (searchValue.value.length === 0) {
-        isVisibleSearchIcon.value = true
-    }
+    debounceEmit()
+    isVisibleSearchIcon.value = searchValue.value.length === 0 
 })
 
 </script>
