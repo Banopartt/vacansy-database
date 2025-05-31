@@ -27,11 +27,14 @@
 import { http } from '@/api/http';
 import { Button, InputText } from 'primevue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
+const router = useRouter()
+
 
 const loginUsers = async () => {
   try{
@@ -44,6 +47,7 @@ const loginUsers = async () => {
       password: password.value,
     })
     localStorage.setItem('my-token', res.data?.token)
+    await router.push(`/user/${res.data?.data?.id}`)
   }catch(error) {
     console.log(error);
     if (error.response.status === 401){
