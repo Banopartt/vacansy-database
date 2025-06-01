@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import "tailwindcss";
+@import 'primeicons/primeicons.css';
+
+
+
+@theme {
+  --font-rubik: "Rubik", "sans-serif";
+  --color-customBlack: #133F42;
+  --color-customPink: #FF4A96;
+  --color-lightPink: #FFF4F9;
+  --color-lightGrey: #F8F8F8;
+  --color-customGray: #849A9C;
+  --color-middleGrey: #C2CDCE;
+}
+
+body {
+  @apply bg-lightGrey;
+}
