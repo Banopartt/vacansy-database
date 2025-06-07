@@ -4,7 +4,7 @@ import SelectOrder from '@/components/education/select-order.vue'
 import MyOrder from '@/components/education/my-order.vue'
 import NewOrder from '@/components/education/new-order.vue'
 
-const selectedOrderValue = ref(false)
+const selectedOrderValue = ref(true)
 </script>
 
 <template>
