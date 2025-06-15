@@ -1,12 +1,37 @@
 <script setup>
-import { onMounted } from 'vue'
-import { Avatar } from 'primevue'
+import { onMounted, ref, watch } from 'vue'
+import { Avatar, Dialog,  } from 'primevue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.js'
 import KeysIcon from '@/assets/images/keys.png'
+import ProfileBasicform from '@/components/profile-edit/ProfileBasicform.vue'
 
 const { myResume } = storeToRefs(useUserStore())
 const { actions } = useUserStore()
+
+const basicDataValues = ref({
+  username: '',
+  year: '',
+  position: [],
+  salary: 0,
+})
+
+watch(myResume, (resume) => {
+  if (resume) {
+    basicDataValues.value = {
+      username: resume.username || '',
+      year: resume.year || '',
+      position: resume.position || [],
+      salary: resume.salary || 0,
+    }
+  }
+})
+
+const isVisibleBasicData = ref(false)
+const isVisibleExperience = ref(false)
+const isVisibleEducation = ref(false)
+const isVisibleAboutMe = ref(false)
+const isVisibleLanguage = ref(false)
 
 onMounted(() => {
   actions.getUserData()
@@ -40,7 +65,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="w-10 h-10 rounded-full bg-white flex justify-center items-center">
+        <div @click="isVisibleBasicData = !isVisibleBasicData" class="w-10 h-10 rounded-full bg-white flex justify-center items-center">
           <i class="pi pi-pen-to-square !text-lg text-customBlack"></i>
         </div>
       </div>
@@ -88,6 +113,14 @@ onMounted(() => {
           </div>
       </div>
     </div>
+  <Dialog
+    header="Основные данные"
+    v-model:visible="isVisibleBasicData"
+    :style="{width: '31.25rem'}"
+    class="!text-customBlack "
+  >
+    <ProfileBasicform v-model:basicDataValues="basicDataValues" />
+  </Dialog>
   </div>
 </template>
 
