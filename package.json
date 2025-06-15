@@ -7,14 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint:oxlint": "oxlint vacansy-database --fix -D correctness --ignore-path .gitignore",
-    "lint:eslint": "eslint vacansy-database --fix",
+    "lint:oxlint": "oxlint src --fix -D correctness --ignore-path .gitignore",
+    "lint:eslint": "eslint src --fix",
     "lint": "run-s lint:*",
     "format": "prettier --write src",
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,vue}": [
+    "src/**/*.{js,ts,vue}": [
       "eslint --fix",
       "prettier --write"
     ]

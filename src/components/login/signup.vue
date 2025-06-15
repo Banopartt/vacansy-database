@@ -3,7 +3,7 @@ import { Button, InputText } from 'primevue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { http } from '@/api/http.js'
-import { LOCALSTORAGE } from '@/const/localStorage.js'
+import { LOCALSTORAGE } from "@/const/localStorage.js"
 
 const email = ref('')
 const password = ref('')
@@ -25,7 +25,7 @@ const loginUser = async () => {
     await router.push(`/user/${res.data?.data?.id}`)
   } catch (error) {
     console.log(error)
-    if (error.response.status === 401) {
+    if (error.response?.status === 401) {
       errorMessage.value = 'Пользователь не авторизован'
     }
   }

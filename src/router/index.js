@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { LOCALSTORAGE } from '@/const/localStorage'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,13 +29,26 @@ const router = createRouter({
       path: '/user/:id',
       name: 'user',
       component: () => import('../views/ProfileView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/user/employee/education',
       name: 'education',
       component: () => import('../views/employee/EducationView.vue'),
+      meta: { requiresAuth: true },
     },
+    {
+      path: '/forbidden',
+      name: 'forbidden',
+      component: () => import('../views/ForbiddenView.vue'),
+    }
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !localStorage.getItem(LOCALSTORAGE.TOKEN)) {
+    next({ path: '/forbidden' })
+  } else next()
 })
 
 export default router
