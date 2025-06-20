@@ -112,6 +112,39 @@ onMounted(() => {
             </div>
           </div>
       </div>
+      <div class="flex items-center justify-between gap-6 mt-10">
+          <div><p class="text-customBlack font-semibold text-xl mb-3">Образование</p>
+          <p class="text-customBlack">{{ myResume?.education }}</p>
+          </div>
+          <div @click="isVisibleBasicData = !isVisibleBasicData" class="w-10 h-10 rounded-full bg-white flex justify-center items-center">
+          <i class="pi pi-pen-to-square !text-lg text-customBlack"></i>
+        </div>
+      </div>
+      <div class="flex items-center justify-between gap-6 mt-10">
+        <div>
+          <p class="text-customBlack font-semibold text-xl mb-3">О себе</p>
+          <p class="text-customBlack">{{ myResume?.about_me }}</p>
+        </div>
+        <div @click="isVisibleBasicData = !isVisibleBasicData" class="w-10 h-10 rounded-full bg-white flex justify-center items-center">
+          <i class="pi pi-pen-to-square !text-lg text-customBlack"></i>
+        </div>
+      </div>
+      <div class="flex items-center justify-between gap-6 mt-10">
+        <div v-for="(experience, id) in myResume?.experience" 
+            :key="`resume-language-${id}`">
+          <p class="text-customBlack font-semibold text-xl mb-3">Языки</p>
+          <div v-if="Array.isArray(myResume?.experience)">
+             <p  v-for="(item, idx) in experience.language"
+                :key="`language-${id}-${idx}`"
+                class="text-customBlack">
+              {{ item }}
+             </p>
+          </div>  
+        </div>
+        <div @click="isVisibleBasicData = !isVisibleBasicData" class="w-10 h-10 rounded-full bg-white flex justify-center items-center">
+          <i class="pi pi-pen-to-square !text-lg text-customBlack"></i>
+        </div>
+      </div>
     </div>
   <Dialog
     header="Основные данные"
