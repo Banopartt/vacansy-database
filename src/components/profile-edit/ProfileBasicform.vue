@@ -1,4 +1,5 @@
 <template>
+  <form @submit.prevent >
     <div class="flex flex-col ">
       <label>Имя</label>
       <InputText v-model="basicDataValues.username" class="!bg-lightGrey !text-customBlack mt-3 !border-none"/>
@@ -21,9 +22,10 @@
       <label>Желаемая оплата (в рублях)</label>
       <InputText v-model="basicDataValues.salary" type="number" class="!bg-lightGrey !text-customBlack mt-3 !border-none"/>
     </div>
-    <Button class="!border-customPink !text-customPink w-full mt-7" variant="outlined">
+    <Button type='submit' class="!border-customPink !text-customPink w-full mt-7" variant="outlined">
         Сохранить
     </Button>
+  </form>
 </template>
 
 <script setup>
@@ -41,6 +43,16 @@ const positionNames = computed({
         })).filter(p => p.name.length > 0);
     }
 })
+
+const handleEditProfileBasic = async ()=> {
+  try{
+
+  }catch (e) {
+
+  }
+}
+
+
 </script>
 
 <style  scoped>

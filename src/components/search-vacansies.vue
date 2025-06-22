@@ -105,8 +105,10 @@
         </div>
       </div>
       <div class="flex justify-between items-center mt-10">
-        <Button variant="outlined" severity="danger" class="w-72 h-12">Применить</Button>
-        <Button @click="clearFilters" variant="outlined" severity="secondary" class="w-72 h-12">Очистить все</Button>
+        <Button @click="applyFilters" variant="outlined" severity="danger" class="w-72 h-12">Применить</Button>
+        <Button @click="clearFilters" variant="outlined" severity="secondary" class="w-72 h-12"
+          >Очистить все</Button
+        >
       </div>
     </Dialog>
   </div>
@@ -129,7 +131,7 @@ const {
   clearFilters,
 } = useFilterOptions()
 
-const emit = defineEmits(['searchResumes'])
+const emit = defineEmits(['searchResumes', 'fetchFilterResumes'])
 const searchValue = defineModel('searchValue')
 const { isFilterBtn, type = 'резюме' } = defineProps(['isFilterBtn', 'type'])
 const visible = ref(false)
@@ -138,6 +140,11 @@ const isVisibleSearchIcon = ref(true)
 const debouncedEmit = debounce(() => {
   emit('searchResumes')
 }, 500)
+
+function applyFilters() {
+  emit('fetchFilterResumes', { ...filter, search: searchValue.value })
+  visible.value = false
+}
 
 watch(searchValue, () => {
   debouncedEmit()

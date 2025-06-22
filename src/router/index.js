@@ -38,6 +38,22 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
+      path: '/user/vacansies',
+      name: 'user-vacansies',
+      component: ()=> import('../views/employee/EmployeeVacansyView.vue'),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/user/:id/my-interview',
+      name: 'user-interview',
+      component: ()=> import('../views/employee/MyInterviewView.vue'),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
       path: '/forbidden',
       name: 'forbidden',
       component: () => import('../views/ForbiddenView.vue'),

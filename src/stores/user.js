@@ -29,6 +29,21 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
+  const init = async ()=> {
+    const token = localStorage.getItem(LOCALSTORAGE.TOKEN)
+    if (token) {
+      await getUserData()
+    }
+  }
+
+  const handleExit = () => {
+    localStorage.removeItem(LOCALSTORAGE.TOKEN)
+    for (let key in user.value) {
+      delete user.value[key]
+    }
+    router.push('/')
+  } 
+
   const isLoginUser = computed(() => user.value?.id && localStorage.getItem(LOCALSTORAGE.TOKEN))
 
   const isCompanyRole = computed(() => user.value.role === ROLES.COMPANY)
@@ -39,6 +54,8 @@ export const useUserStore = defineStore('user', () => {
     actions: {
       getUserData,
       getMyResume,
+      init,
+      handleExit
     },
     getters: {
       isLoginUser,

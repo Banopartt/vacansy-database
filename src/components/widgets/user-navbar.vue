@@ -46,17 +46,17 @@ const links = [
   },
   {
     title: 'Мое резюме',
-    to: '',
+    to: `/user/${user.value?.id}`,
     role: getters.isEmployeeRole,
   },
   {
     title: 'Мои собеседования',
-    to: '',
+    to: `/user/${user.value?.id}/my-interview`,
     role: getters.isEmployeeRole,
   },
   {
     title: 'Вакансии',
-    to: '',
+    to: '/user/vacansies',
     role: getters.isEmployeeRole,
   },
   {
